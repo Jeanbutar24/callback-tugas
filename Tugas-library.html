@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1 class="text-center">MY FAVORITE BOOK</h1>
+      <div id="app" class="text-center"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script>
+      class Table {
+        constructor(init) {
+          this.init = init;
+        }
+
+        createHeader(data) {
+          let open = "<thead><tr>";
+          let close = "</tr></thead>";
+          data.forEach((d) => {
+            open += `<th>${d}</th>`;
+          });
+
+          return open + close;
+        }
+
+        createBody(data) {
+          let open = "<tbody>";
+          let close = "</tbody>";
+
+          data.forEach((d) => {
+            open += `
+              <tr>
+                <td>${d[0]}</td>
+                <td>${d[1]}</td>
+                <td>${d[2]}</td>
+                <td>${d[3]}</td>
+              </tr>
+            `;
+          });
+
+          return open + close;
+        }
+
+        render(element) {
+          let table = "<table class='table table-success table-striped'>" + this.createHeader(this.init.columns) + this.createBody(this.init.data) + "</table>";
+          element.innerHTML = table;
+        }
+      }
+
+      const table = new Table({
+        columns: ["NO", "TITLE ", "WRITER", "PUBLICATION YEAR"],
+        data: [
+          ["1", "Pulang", "Tere Liye", "2015"],
+          ["2", "Hujan", "Tere Liye", "2016"],
+          ["3", "Laskar Pelangi", "Andrea Hirata", "2005"],
+        ],
+      });
+      const app = document.getElementById("app");
+      table.render(app);
+    </script>
+  </body>
+</html>
