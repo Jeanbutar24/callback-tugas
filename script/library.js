@@ -1,38 +1,43 @@
-export class Table {
-  constructor(init) {
-    this.init = init;
-  }
+const ajx = new XMLHttpRequest();
+ajx.addEventListener("load", function () {
+  const dataAjax = JSON.parse(ajx.responseText);
+  const lokasiTable = document.getElementById("app");
+  lokasiTable.innerHTML = dataTable(dataAjax);
+});
 
-  createHeader(data) {
-    let open = "<thead><tr>";
-    let close = "</tr></thead>";
-    data.forEach((d) => {
-      open += `<th>${d}</th>`;
-    });
+ajx.open("GET", "https://jsonplaceholder.typicode.com/users");
+ajx.send();
 
-    return open + close;
-  }
-
-  createBody(data) {
-    let open = "<tbody>";
-    let close = "</tbody>";
-
-    data.forEach((d) => {
-      open += `
-          <tr>
-            <td>${d[0]}</td>
-            <td>${d[1]}</td>
-            <td>${d[2]}</td>
-            <td>${d[3]}</td>
-          </tr>
-        `;
-    });
-
-    return open + close;
-  }
-
-  render(element) {
-    let table = "<table class='table table-success table-striped'>" + this.createHeader(this.init.columns) + this.createBody(this.init.data) + "</table>";
-    element.innerHTML = table;
-  }
+function dataTable(e) {
+  return `
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+      <th scope="col">Address</th>
+      <th scope="col">Company</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+       ${e.map((user, index) => {
+         return `
+       <tr ${(key = index)}>  
+      <th>${user.id}</th>
+      <td>${user.name}</td>
+      <td>${user.username}</td>
+      <td>${user.email}</td>
+      <td>${user.address.street},${user.address.suite},${user.address.city}</td>
+      <td>${user.company.name}</td>
+      </tr>
+      `;
+       })}
+    </tr>
+  </tbody>
+</table>
+    
+    `;
 }

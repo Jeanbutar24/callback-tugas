@@ -3,28 +3,26 @@
   <head>
     <title>Membuat Module Pada library</title>
     <meta charset="UTF-8" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
   </head>
 
   <body>
     <div class="container">
-      <h1 class="text-center">MY FAVORITE BOOK</h1>
-      <div id="app" class="text-center"></div>
+      <h1 class="text-center">List Of Users</h1>
+      <div id="app" class="container"></div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-    <script type="module">
-      import { Table } from "./script/library.js";
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 
-      const table = new Table({
-        columns: ["NO", "TITLE ", "WRITER", "PUBLICATION YEAR"],
-        data: [
-          ["1", "Pulang", "Tere Liye", "2015"],
-          ["2", "Hujan", "Tere Liye", "2016"],
-          ["3", "Laskar Pelangi", "Andrea Hirata", "2005"],
-        ],
-      });
-      const app = document.getElementById("app");
-      table.render(app);
-    </script>
+    <script src="./script/library.js"></script>
   </body>
 </html>
